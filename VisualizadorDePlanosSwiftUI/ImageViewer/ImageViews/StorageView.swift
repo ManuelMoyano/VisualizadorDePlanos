@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseStorage
 
-struct HomeView: View {
+struct StorageView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @State private var imageCode = ""
     @StateObject var storageManager = StorageManager()
@@ -67,9 +67,9 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct StorageView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(authenticationViewModel: AuthenticationViewModel())
+        StorageView(authenticationViewModel: AuthenticationViewModel())
 .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }

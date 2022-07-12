@@ -26,9 +26,9 @@ struct VisualizadorDePlanosSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             if let _ = authenticationViewModel.user {
-                HomeView(authenticationViewModel: authenticationViewModel)
+                OptionsView(authenticationViewModel: authenticationViewModel)
             } else {
-                ContentView(authenticationViewModel: authenticationViewModel)
+                InitView(authenticationViewModel: authenticationViewModel)
             }
         }
     }

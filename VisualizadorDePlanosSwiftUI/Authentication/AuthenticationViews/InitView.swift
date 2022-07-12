@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct InitView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @State private var authenticationSheet: SheetNames?
     
@@ -47,8 +47,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct InitView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(authenticationViewModel: AuthenticationViewModel())
+        InitView(authenticationViewModel: AuthenticationViewModel())
     }
 }
