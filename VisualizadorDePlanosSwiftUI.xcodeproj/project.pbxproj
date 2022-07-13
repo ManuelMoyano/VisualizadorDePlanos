@@ -33,6 +33,7 @@
 		3C5C6BDE287E25C4001A398C /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C6BDD287E25C3001A398C /* OptionsView.swift */; };
 		3C5C6BE0287E2CBD001A398C /* FireStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C6BDF287E2CBD001A398C /* FireStoreView.swift */; };
 		3C5C6BE2287EF795001A398C /* FireStoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C6BE1287EF795001A398C /* FireStoreImageView.swift */; };
+		3CF9E961287F5B9A00290AD0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF9E960287F5B9A00290AD0 /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		3C5C6BDD287E25C3001A398C /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		3C5C6BDF287E2CBD001A398C /* FireStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreView.swift; sourceTree = "<group>"; };
 		3C5C6BE1287EF795001A398C /* FireStoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreImageView.swift; sourceTree = "<group>"; };
+		3CF9E960287F5B9A00290AD0 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				3C0217D6287B9D70004A5BB5 /* StorageImageView.swift */,
 				3C5C6BDF287E2CBD001A398C /* FireStoreView.swift */,
 				3C5C6BE1287EF795001A398C /* FireStoreImageView.swift */,
+				3CF9E960287F5B9A00290AD0 /* ProgressView.swift */,
 			);
 			path = ImageViews;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				3C0217BD287746F8004A5BB5 /* LoginView.swift in Sources */,
 				3C5C6BDA287E0786001A398C /* FireStoreDatasource.swift in Sources */,
 				3C0217C828776653004A5BB5 /* AuthenticationRepository.swift in Sources */,
+				3CF9E961287F5B9A00290AD0 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -56,31 +56,6 @@ struct StorageView: View {
         }
             .navigationBarTitle("Vista de Planos")
             .navigationBarHidden(true)
-
-//            .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem (placement: .principal) {
-//                    HStack {
-//                        Button ("Logout"){
-//                            authenticationViewModel.logOut()
-//                        }
-//                        .frame(height: 30)
-//                        .foregroundColor(.white)
-//                        .background(Color.orange.opacity(0.7))
-//                        .cornerRadius(15)
-//                        Spacer()
-//                        Button ("List Files"){
-//                            Task {
-//                                await storageManager.listItems()
-//                            }
-//                        }
-//                        .frame(height: 30)
-//                        .foregroundColor(.white)
-//                        .background(Color.orange.opacity(0.7))
-//                        .cornerRadius(15)
-//                    }
-//                }
-//            }
         }
     }
 }

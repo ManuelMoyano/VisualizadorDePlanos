@@ -50,36 +50,6 @@ struct FireStoreView: View {
             }
             }
             .navigationBarHidden(true)
-//            .toolbar {
-//                ToolbarItem (placement: .principal) {
-//                    HStack {
-//                        Button ("Logout"){
-//                            authenticationViewModel.logOut()
-//                        }
-//                        .frame(height: 30)
-//                        .foregroundColor(.white)
-//                        .background(Color.orange.opacity(0.7))
-//                        .cornerRadius(15)
-//                        Spacer()
-//                        Image("Logo MyL")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 140, height: 20)
-//                        .cornerRadius(10)
-//                        .clipped()
-//                        Spacer()
-//                        Button ("List Files"){
-//                            Task {
-//                                planosViewModel.getAllPlanos()
-//                            }
-//                        }
-//                        .frame(height: 30)
-//                        .foregroundColor(.white)
-//                        .background(Color.orange.opacity(0.7))
-//                        .cornerRadius(15)
-//                    }
-//                }
-//            }
             }
         }
     }
