@@ -14,16 +14,36 @@ struct OptionsView: View {
     var body: some View {
         NavigationView{
             VStack{
-                Button ("Storage"){
+                Image("Logo MyL")
+                .resizable()
+                .frame(width: 400
+                       , height: 200, alignment: .center)
+                .border(.white)
+                .cornerRadius(200)
+                Button {
                     optionsSheet = .storage
+                } label: {
+                    HStack{
+                    Image(systemName: "doc")
+                    Text ("Storage")
+                    }
                 }
                 .buttonStyle(.bordered)
                 .buttonBorderShape(.capsule)
-                Button ("FireStore"){
+                .font(.system(size: 30))
+
+                Button {
                     optionsSheet = .firestore
+                } label: {
+                    HStack{
+                    Image(systemName: "doc.text")
+                    Text ("FireStore")
+                    }
                 }
                 .buttonStyle(.bordered)
                 .buttonBorderShape(.capsule)
+                .font(.system(size: 30))
+                Spacer()
             }
                 .toolbar {
                     ToolbarItem (placement: .principal) {
@@ -35,13 +55,6 @@ struct OptionsView: View {
                             .foregroundColor(.white)
                             .background(Color.orange.opacity(0.7))
                             .cornerRadius(15)
-                            Spacer()
-                            Image("Logo MyL")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 140, height: 20)
-                            .cornerRadius(10)
-                            .clipped()
                             Spacer()
                         }
                     }

@@ -14,42 +14,72 @@ struct FireStoreView: View {
     
     var body: some View {
         NavigationView{
+            VStack{
+                HStack {
+                    Button ("Logout"){
+                        authenticationViewModel.logOut()
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    Spacer()
+                    Button ("List Files"){
+                        Task {
+                            planosViewModel.getAllPlanos()
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                }
+            Image("Logo MyL")
+            .resizable()
+            .frame(width: 400
+                   , height: 200, alignment: .center)
+            .border(.white)
+            .cornerRadius(200)
+            Text("Usuario: \(authenticationViewModel.user?.email ?? "No user")")
+            Section{
             List (planosViewModel.planos, id: \.id) { plano in
                 NavigationLink{
                     FireStoreImageView(codigo: plano.codigo, ubicacion: plano.url)
                 } label: {
-                    Text ("\(plano.codigo)")
-                }
-            }
-            .toolbar {
-                ToolbarItem (placement: .principal) {
-                    HStack {
-                        Button ("Logout"){
-                            authenticationViewModel.logOut()
-                        }
-                        .frame(height: 30)
-                        .foregroundColor(.white)
-                        .background(Color.orange.opacity(0.7))
-                        .cornerRadius(15)
-                        Spacer()
-                        Image("Logo MyL")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 140, height: 20)
-                        .cornerRadius(10)
-                        .clipped()
-                        Spacer()
-                        Button ("List Files"){
-                            Task {
-                                planosViewModel.getAllPlanos()
-                            }
-                        }
-                        .frame(height: 30)
-                        .foregroundColor(.white)
-                        .background(Color.orange.opacity(0.7))
-                        .cornerRadius(15)
+                    HStack{
+                        Image(systemName: "arrow.right.doc.on.clipboard")
+                        Text ("\(plano.codigo)")
                     }
                 }
+            }
+            }
+            .navigationBarHidden(true)
+//            .toolbar {
+//                ToolbarItem (placement: .principal) {
+//                    HStack {
+//                        Button ("Logout"){
+//                            authenticationViewModel.logOut()
+//                        }
+//                        .frame(height: 30)
+//                        .foregroundColor(.white)
+//                        .background(Color.orange.opacity(0.7))
+//                        .cornerRadius(15)
+//                        Spacer()
+//                        Image("Logo MyL")
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
+//                        .frame(width: 140, height: 20)
+//                        .cornerRadius(10)
+//                        .clipped()
+//                        Spacer()
+//                        Button ("List Files"){
+//                            Task {
+//                                planosViewModel.getAllPlanos()
+//                            }
+//                        }
+//                        .frame(height: 30)
+//                        .foregroundColor(.white)
+//                        .background(Color.orange.opacity(0.7))
+//                        .cornerRadius(15)
+//                    }
+//                }
+//            }
             }
         }
     }

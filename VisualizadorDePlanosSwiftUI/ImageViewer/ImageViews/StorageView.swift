@@ -15,53 +15,72 @@ struct StorageView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack(alignment: .center){
-                Text("\(authenticationViewModel.user?.email ?? "No user")")
+                HStack {
+                    Button ("Logout"){
+                        authenticationViewModel.logOut()
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    Spacer()
+                    Button ("List Files"){
+                        Task {
+                            await storageManager.listItems()
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                }
+                Image("Logo MyL")
+                .resizable()
+                .frame(width: 400
+                       , height: 200, alignment: .center)
+                .border(.white)
+                .cornerRadius(200)
+                Text("Usuario: \(authenticationViewModel.user?.email ?? "No user")")
             Section {
                 List (storageManager.codigos, id: \.id) {item in
                     VStack {
                         NavigationLink {
                             StorageImageView(ubicacion: item.codigo)
                         } label: {
-                            Text("\(item.codigo)")
+                            HStack{
+                                Image(systemName: "arrow.right.doc.on.clipboard")
+                                Text("\(item.codigo)")
+                            }
                         }
                     }
                 }
             }
         }
             .navigationBarTitle("Vista de Planos")
+            .navigationBarHidden(true)
 
 //            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem (placement: .principal) {
-                    HStack {
-                        Button ("Logout"){
-                            authenticationViewModel.logOut()
-                        }
-                        .frame(height: 30)
-                        .foregroundColor(.white)
-                        .background(Color.orange.opacity(0.7))
-                        .cornerRadius(15)
-                        Spacer()
-                        Image("Logo MyL")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 140, height: 20)
-                        .cornerRadius(10)
-                        .clipped()
-                        Spacer()
-                        Button ("List Files"){
-                            Task {
-                                await storageManager.listItems()
-                            }
-                        }
-                        .frame(height: 30)
-                        .foregroundColor(.white)
-                        .background(Color.orange.opacity(0.7))
-                        .cornerRadius(15)
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem (placement: .principal) {
+//                    HStack {
+//                        Button ("Logout"){
+//                            authenticationViewModel.logOut()
+//                        }
+//                        .frame(height: 30)
+//                        .foregroundColor(.white)
+//                        .background(Color.orange.opacity(0.7))
+//                        .cornerRadius(15)
+//                        Spacer()
+//                        Button ("List Files"){
+//                            Task {
+//                                await storageManager.listItems()
+//                            }
+//                        }
+//                        .frame(height: 30)
+//                        .foregroundColor(.white)
+//                        .background(Color.orange.opacity(0.7))
+//                        .cornerRadius(15)
+//                    }
+//                }
+//            }
         }
     }
 }

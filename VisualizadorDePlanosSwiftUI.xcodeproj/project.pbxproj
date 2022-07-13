@@ -54,7 +54,7 @@
 		3C5C6BD3287E066D001A398C /* FireStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreViewModel.swift; sourceTree = "<group>"; };
 		3C5C6BD7287E0738001A398C /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
 		3C5C6BD9287E0786001A398C /* FireStoreDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreDatasource.swift; sourceTree = "<group>"; };
-		3C5C6BDD287E25C3001A398C /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		3C5C6BDD287E25C3001A398C /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		3C5C6BDF287E2CBD001A398C /* FireStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreView.swift; sourceTree = "<group>"; };
 		3C5C6BE1287EF795001A398C /* FireStoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */

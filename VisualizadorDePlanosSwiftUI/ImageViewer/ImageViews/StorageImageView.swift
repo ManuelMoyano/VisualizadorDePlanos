@@ -16,7 +16,10 @@ var ubicacion: String
             AsyncImage(url: URL(string: storageManager.imageURL?.absoluteString ?? "")) { image in
                     image.resizable()
                 } placeholder: {
-                    Color.gray
+                    Image(systemName: "doc")
+                        .resizable()
+                        .scaledToFit()
+                        .font(.system(size: 8, weight: .ultraLight))
                 }
             .padding(10)
             .scaledToFit()

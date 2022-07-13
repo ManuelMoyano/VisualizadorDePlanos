@@ -16,7 +16,10 @@ struct FireStoreImageView: View {
             AsyncImage(url: URL(string: ubicacion)) { image in
                     image.resizable()
                 } placeholder: {
-                    Color.gray
+                    Image(systemName: "doc")
+                        .resizable()
+                        .scaledToFit()
+                        .font(.system(size: 8, weight: .ultraLight))
                 }
             .padding(10)
             .scaledToFit()
