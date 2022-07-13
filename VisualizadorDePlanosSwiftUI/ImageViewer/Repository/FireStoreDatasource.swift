@@ -30,7 +30,10 @@ final class PlanosDatasource {
                 completionBlock(.success([]))
                 return
             }
-            let planos = documents.map { try? $0.data(as: PlanosDataModel.self) }.compactMap { $0 }
+            var planos = documents.map { try? $0.data(as: PlanosDataModel.self) }.compactMap { $0 }
+            planos.sort {
+                $0.codigo < $1.codigo
+            }
             completionBlock(.success(planos))
         }
     }

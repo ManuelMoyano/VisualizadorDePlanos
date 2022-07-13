@@ -7,18 +7,20 @@
 
 import SwiftUI
 
-struct ImageView: View {
-@StateObject var storageManager = StorageManager()
+struct StorageImageView: View {
+@ObservedObject var storageManager = StorageManager()
 var ubicacion: String
     
     var body: some View {
-        AsyncImage(url: URL(string: storageManager.imageURL?.absoluteString ?? "")) { image in
-                image.resizable()
-            } placeholder: {
-                Color.gray
-            }
+        VStack{
+            AsyncImage(url: URL(string: storageManager.imageURL?.absoluteString ?? "")) { image in
+                    image.resizable()
+                } placeholder: {
+                    Color.gray
+                }
             .padding(10)
             .scaledToFit()
+        }
             .onAppear {
                 Task {
                     await storageManager.loadImageFromFirebase(ubicacion: ubicacion)
@@ -27,8 +29,8 @@ var ubicacion: String
     }
 }
 
-struct ImageView_Previews: PreviewProvider {
+struct StorageImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageView(ubicacion: "")
+        StorageImageView(ubicacion: "")
     }
 }

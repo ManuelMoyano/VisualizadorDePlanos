@@ -11,7 +11,6 @@ import FirebaseStorage
 
 struct StorageView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
-    @State private var imageCode = ""
     @StateObject var storageManager = StorageManager()
     
     var body: some View {
@@ -22,7 +21,7 @@ struct StorageView: View {
                 List (storageManager.codigos, id: \.id) {item in
                     VStack {
                         NavigationLink {
-                            ImageView(ubicacion: item.codigo)
+                            StorageImageView(ubicacion: item.codigo)
                         } label: {
                             Text("\(item.codigo)")
                         }
