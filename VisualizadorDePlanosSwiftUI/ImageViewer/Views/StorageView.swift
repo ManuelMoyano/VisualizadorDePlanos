@@ -12,32 +12,12 @@ import FirebaseStorage
 struct StorageView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @StateObject var storageManager = StorageManager()
+    @State private var searchText = ""
     
     var body: some View {
         NavigationView {
-            
             VStack(alignment: .center){
-                HStack {
-                    Button ("Logout"){
-                        authenticationViewModel.logOut()
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                    Spacer()
-                    Button ("List Files"){
-                        Task {
-                            await storageManager.listItems()
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                }
-                Image("Logo MyL")
-                .resizable()
-                .frame(width: 400
-                       , height: 200, alignment: .center)
-                .border(.white)
-                .cornerRadius(200)
+                LogoView()
                 Text("Usuario: \(authenticationViewModel.user?.email ?? "No user")")
             Section {
                 List (storageManager.codigos, id: \.id) {item in
@@ -53,9 +33,31 @@ struct StorageView: View {
                     }
                 }
             }
+        }.toolbar {
+            ToolbarItem (placement: .principal) {
+                HStack {
+                    Button ("Logout"){
+                        authenticationViewModel.logOut()
+                    }
+                    .frame(height: 30)
+                    .foregroundColor(.white)
+                    .background(Color.orange.opacity(0.7))
+                    .cornerRadius(15)
+                    Spacer()
+                    Button ("List Files"){
+                        Task {
+                            await storageManager.listItems()
+                        }
+                        
+                    }
+                    .frame(height: 30)
+                    .foregroundColor(.white)
+                    .background(Color.orange.opacity(0.7))
+                    .cornerRadius(15)
+                }
+            }
         }
-            .navigationBarTitle("Vista de Planos")
-            .navigationBarHidden(true)
+         .navigationBarTitle("", displayMode: .inline)
         }
     }
 }

@@ -16,13 +16,16 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Text("Login View")
-                .padding(30)
+            LogoView()
+            Text("Login")
+                .font(.largeTitle)
             Group {
                 TextField("Email Adress", text: $userEmailAdress)
                     .padding(.top,20)
+                    .border(.gray, width: 1)
                 TextField("Password", text: $userPassword)
                     .padding(.top,20)
+                    .border(.gray, width: 1)
             }
             Spacer()
             Button ("Login"){

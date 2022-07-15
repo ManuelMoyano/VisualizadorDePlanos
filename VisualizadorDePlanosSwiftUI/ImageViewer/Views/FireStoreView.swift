@@ -15,27 +15,7 @@ struct FireStoreView: View {
     var body: some View {
         NavigationView{
             VStack{
-                HStack {
-                    Button ("Logout"){
-                        authenticationViewModel.logOut()
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                    Spacer()
-                    Button ("List Files"){
-                        Task {
-                            planosViewModel.getAllPlanos()
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                }
-            Image("Logo MyL")
-            .resizable()
-            .frame(width: 400
-                   , height: 200, alignment: .center)
-            .border(.white)
-            .cornerRadius(200)
+            LogoView()
             Text("Usuario: \(authenticationViewModel.user?.email ?? "No user")")
             Section{
             List (planosViewModel.planos, id: \.id) { plano in
@@ -49,7 +29,30 @@ struct FireStoreView: View {
                 }
             }
             }
-            .navigationBarHidden(true)
+            .toolbar {
+                ToolbarItem (placement: .principal) {
+                    HStack {
+                        Button ("Logout"){
+                            authenticationViewModel.logOut()
+                        }
+                        .frame(height: 30)
+                        .foregroundColor(.white)
+                        .background(Color.orange.opacity(0.7))
+                        .cornerRadius(15)
+                        Spacer()
+                        Button ("List Files"){
+                            Task {
+                                planosViewModel.getAllPlanos()
+                            }
+                        }
+                        .frame(height: 30)
+                        .foregroundColor(.white)
+                        .background(Color.orange.opacity(0.7))
+                        .cornerRadius(15)
+                    }
+                }
+            }
+            .navigationBarTitle("", displayMode: .inline)
             }
         }
     }

@@ -15,12 +15,16 @@ struct RegisterView: View {
     
     var body: some View {
         VStack {
-            Text("Login View")
+            LogoView()
+            Text("Register")
                 .padding(30)
+                .font(.largeTitle)
             TextField("Email Adress", text: $userEmailAdress)
                 .padding(.top,20)
+                .border(.gray, width: 1)
             TextField("Password", text: $userPassword)
                 .padding(.top,20)
+                .border(.gray, width: 2)
             Spacer()
             Button ("Aceptar") {
                 authenticationViewModel.creatNewUser(email: userEmailAdress, password: userPassword)

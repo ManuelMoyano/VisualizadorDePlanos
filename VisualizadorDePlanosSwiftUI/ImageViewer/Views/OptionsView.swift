@@ -14,12 +14,8 @@ struct OptionsView: View {
     var body: some View {
         NavigationView{
             VStack{
-                Image("Logo MyL")
-                .resizable()
-                .frame(width: 400
-                       , height: 200, alignment: .center)
-                .border(.white)
-                .cornerRadius(200)
+                LogoView()
+                InitScrollView()
                 Button {
                     optionsSheet = .storage
                 } label: {
@@ -31,7 +27,6 @@ struct OptionsView: View {
                 .buttonStyle(.bordered)
                 .buttonBorderShape(.capsule)
                 .font(.system(size: 30))
-
                 Button {
                     optionsSheet = .firestore
                 } label: {
@@ -67,6 +62,7 @@ struct OptionsView: View {
                         FireStoreView(authenticationViewModel:authenticationViewModel)
                     }
                 }
+                .navigationBarTitle("", displayMode: .inline)
         }
     }
 }

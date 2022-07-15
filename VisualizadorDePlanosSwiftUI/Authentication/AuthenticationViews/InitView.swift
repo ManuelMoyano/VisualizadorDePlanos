@@ -14,12 +14,15 @@ struct InitView: View {
     var body: some View {
         VStack {
             Section {
-            Image("Logo MyL")
+                Image("Logo MyL")
                 .resizable()
-                .scaledToFit()
-            Image("Gato2")
-                    .resizable()
-                    .scaledToFit()
+                .frame(width: 400
+                       , height: 200, alignment: .center)
+                .border(.white)
+                .cornerRadius(200)
+            }
+            Section{
+                InitScrollView()
             }
             Spacer()
             VStack {
