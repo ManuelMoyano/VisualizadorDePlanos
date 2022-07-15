@@ -10,49 +10,64 @@ import SwiftUI
 struct FireStoreView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @StateObject var planosViewModel: PlanosViewModel = PlanosViewModel()
+    @State private var searchText = ""
+    var searchResults: [PlanosDataModel] {
+        if searchText.isEmpty {
+            return planosViewModel.planos
+        } else {
+            return planosViewModel.planos.filter { $0.codigo.contains(searchText) }
+        }
+    }
 
     
     var body: some View {
-        NavigationView{
-            VStack{
+        VStack {
             LogoView()
-            Text("Usuario: \(authenticationViewModel.user?.email ?? "No user")")
-            Section{
-            List (planosViewModel.planos, id: \.id) { plano in
-                NavigationLink{
-                    FireStoreImageView(codigo: plano.codigo, ubicacion: plano.url)
-                } label: {
-                    HStack{
-                        Image(systemName: "arrow.right.doc.on.clipboard")
-                        Text ("\(plano.codigo)")
+            HStack {
+                Image (systemName: "person.circle")
+                Text("\(authenticationViewModel.user?.email ?? "No user")")
+            }
+            NavigationView{
+                VStack{
+
+                Section{
+                List (searchResults, id: \.id) { plano in
+                    NavigationLink{
+                        FireStoreImageView(codigo: plano.codigo, ubicacion: plano.url)
+                    } label: {
+                        HStack{
+                            Image(systemName: "arrow.right.doc.on.clipboard")
+                            Text ("\(plano.codigo)")
+                        }
                     }
                 }
-            }
-            }
-            .toolbar {
-                ToolbarItem (placement: .principal) {
-                    HStack {
-                        Button ("Logout"){
-                            authenticationViewModel.logOut()
-                        }
-                        .frame(height: 30)
-                        .foregroundColor(.white)
-                        .background(Color.orange.opacity(0.7))
-                        .cornerRadius(15)
-                        Spacer()
-                        Button ("List Files"){
-                            Task {
-                                planosViewModel.getAllPlanos()
+                .searchable(text: $searchText)
+                }
+                .toolbar {
+                    ToolbarItem (placement: .principal) {
+                        HStack {
+//                            Button ("Logout"){
+//                                authenticationViewModel.logOut()
+//                            }
+//                            .frame(height: 30)
+//                            .foregroundColor(.white)
+//                            .background(Color.orange.opacity(0.7))
+//                            .cornerRadius(15)
+                            Spacer()
+                            Button ("List Files"){
+                                Task {
+                                    planosViewModel.getAllPlanos()
+                                }
                             }
+                            .frame(height: 30)
+                            .foregroundColor(.white)
+                            .background(Color.orange.opacity(0.7))
+                            .cornerRadius(15)
                         }
-                        .frame(height: 30)
-                        .foregroundColor(.white)
-                        .background(Color.orange.opacity(0.7))
-                        .cornerRadius(15)
                     }
                 }
-            }
-            .navigationBarTitle("", displayMode: .inline)
+                .navigationBarTitle("", displayMode: .inline)
+                }
             }
         }
     }
