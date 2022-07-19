@@ -48,13 +48,6 @@ struct StorageView: View {
             }.toolbar {
                 ToolbarItem (placement: .principal) {
                     HStack {
-//                        Button ("Logout"){
-//                            authenticationViewModel.logOut()
-//                        }
-//                        .frame(height: 30)
-//                        .foregroundColor(.white)
-//                        .background(Color.orange.opacity(0.7))
-//                        .cornerRadius(15)
                         Spacer()
                         Button ("List Files"){
                             Task {

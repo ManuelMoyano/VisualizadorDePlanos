@@ -15,7 +15,7 @@ struct StockView: View {
         if searchText.isEmpty {
             return stockViewModel.pieces
         } else {
-            return stockViewModel.pieces.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) }
+            return stockViewModel.pieces.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) || $0.descripcion.localizedCaseInsensitiveContains(searchText)  }
         }
     }
     

@@ -12,13 +12,20 @@ struct FireStoreView: View {
     @StateObject var planosViewModel: PlanosViewModel = PlanosViewModel()
     @State private var searchText = ""
     var searchResults: [PlanosDataModel] {
+        //        if filter == .codigo {
+        //            return planosViewModel.planos.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) }
+        //        }
+        //        if filter == .descripcion {
+        //            return planosViewModel.planos.filter { $0.descripcion.localizedCaseInsensitiveContains(searchText) }
+        //        }
+        //        return planosViewModel.planos
+        
         if searchText.isEmpty {
             return planosViewModel.planos
         } else {
-            return planosViewModel.planos.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) }
+            return planosViewModel.planos.filter { $0.descripcion.localizedCaseInsensitiveContains(searchText) || $0.codigo.localizedCaseInsensitiveContains(searchText) }
         }
     }
-
     
     var body: some View {
         VStack {
@@ -29,50 +36,44 @@ struct FireStoreView: View {
             }
             NavigationView{
                 VStack{
-
-                Section{
-                List (searchResults, id: \.id) { plano in
-                    NavigationLink{
-                        FireStoreImageView(codigo: plano.codigo, descripcion: plano.descripcion, ubicacion: plano.url)
-                    } label: {
-                        HStack{
-                            Image(systemName: "arrow.right.doc.on.clipboard")
-                            Text ("\(plano.codigo)")
-                            Text ("\(plano.descripcion)")
-                        }
-                    }
-                }
-                .searchable(text: $searchText)
-                }
-                .toolbar {
-                    ToolbarItem (placement: .principal) {
-                        HStack {
-//                            Button ("Logout"){
-//                                authenticationViewModel.logOut()
-//                            }
-//                            .frame(height: 30)
-//                            .foregroundColor(.white)
-//                            .background(Color.orange.opacity(0.7))
-//                            .cornerRadius(15)
-                            Spacer()
-                            Button ("List Files"){
-                                Task {
-                                    planosViewModel.getAllPlanos()
+                    
+                    Section{
+                        List (searchResults, id: \.id) { plano in
+                            NavigationLink{
+                                FireStoreImageView(codigo: plano.codigo, descripcion: plano.descripcion, ubicacion: plano.url)
+                            } label: {
+                                HStack{
+                                    Image(systemName: "arrow.right.doc.on.clipboard")
+                                    Text ("\(plano.codigo)")
+                                    Text ("\(plano.descripcion)")
                                 }
                             }
-                            .frame(height: 30)
-                            .foregroundColor(.white)
-                            .background(Color.orange.opacity(0.7))
-                            .cornerRadius(15)
+                        }
+                        .searchable(text: $searchText)
+                    }
+                    .toolbar {
+                        ToolbarItem (placement: .principal) {
+                            HStack{
+                                Spacer()
+                                Button ("List Files"){
+                                    Task {
+                                        planosViewModel.getAllPlanos()
+                                    }
+                                }
+                                .frame(height: 30)
+                                .foregroundColor(.white)
+                                .background(Color.orange.opacity(0.7))
+                                .cornerRadius(15)
+                            }
                         }
                     }
                 }
                 .navigationBarTitle("Vista FireStore", displayMode: .inline)
-                }
             }
         }
     }
 }
+
 
 struct FireStoreView_Previews: PreviewProvider {
     static var previews: some View {
