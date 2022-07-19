@@ -38,6 +38,17 @@ struct OptionsView: View {
                 .buttonStyle(.bordered)
                 .buttonBorderShape(.capsule)
                 .font(.system(size: 30))
+                Button {
+                    optionsSheet = .stock
+                } label: {
+                    HStack{
+                    Image(systemName: "cart")
+                    Text ("Stock")
+                    }
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
+                .font(.system(size: 30))
                 Spacer()
             }
                 .toolbar {
@@ -60,6 +71,8 @@ struct OptionsView: View {
                         StorageView(authenticationViewModel: authenticationViewModel)
                     case .firestore:
                         FireStoreView(authenticationViewModel:authenticationViewModel)
+                    case .stock:
+                        StockView(authenticationViewModel: authenticationViewModel)
                     }
                 }
                 .navigationBarTitle("", displayMode: .inline)

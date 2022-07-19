@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StorageImageView: View {
 @ObservedObject var storageManager = StorageManager()
-var ubicacion: String
+let ubicacion: String
     
     var body: some View {
         VStack{
@@ -21,6 +21,7 @@ var ubicacion: String
                 }
             .padding(10)
             .scaledToFit()
+            Spacer()
         }
             .onAppear {
                 Task {

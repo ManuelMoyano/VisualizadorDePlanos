@@ -19,6 +19,7 @@ enum SheetNames: String, Identifiable {
 enum OptionsViewSheets: String, Identifiable {
     case storage
     case firestore
+    case stock
     
 //  Esta variable se requiere para poder usarla en el comando sheet
     var id: String {

@@ -17,7 +17,7 @@ struct StorageView: View {
         if searchText.isEmpty {
             return storageManager.codigos
         } else {
-            return storageManager.codigos.filter { $0.codigo.contains(searchText) }
+            return storageManager.codigos.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) }
         }
     }
     
@@ -69,7 +69,7 @@ struct StorageView: View {
                     }
                 }
             }
-             .navigationBarTitle("", displayMode: .inline)
+             .navigationBarTitle("Vista Storage", displayMode: .inline)
             }
         }
     }

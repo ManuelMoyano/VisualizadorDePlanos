@@ -15,7 +15,7 @@ struct FireStoreView: View {
         if searchText.isEmpty {
             return planosViewModel.planos
         } else {
-            return planosViewModel.planos.filter { $0.codigo.contains(searchText) }
+            return planosViewModel.planos.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) }
         }
     }
 
@@ -33,11 +33,12 @@ struct FireStoreView: View {
                 Section{
                 List (searchResults, id: \.id) { plano in
                     NavigationLink{
-                        FireStoreImageView(codigo: plano.codigo, ubicacion: plano.url)
+                        FireStoreImageView(codigo: plano.codigo, descripcion: plano.descripcion, ubicacion: plano.url)
                     } label: {
                         HStack{
                             Image(systemName: "arrow.right.doc.on.clipboard")
                             Text ("\(plano.codigo)")
+                            Text ("\(plano.descripcion)")
                         }
                     }
                 }
@@ -66,7 +67,7 @@ struct FireStoreView: View {
                         }
                     }
                 }
-                .navigationBarTitle("", displayMode: .inline)
+                .navigationBarTitle("Vista FireStore", displayMode: .inline)
                 }
             }
         }

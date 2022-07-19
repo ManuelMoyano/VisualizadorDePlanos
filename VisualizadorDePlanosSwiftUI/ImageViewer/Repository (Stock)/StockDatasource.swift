@@ -1,25 +1,27 @@
 //
-//  FireStoreDatasource.swift
+//  StockDatasource.swift
 //  VisualizadorDePlanosSwiftUI
 //
-//  Created by Manuel Moyano on 12/07/2022.
+//  Created by Manuel Moyano on 19/07/2022.
 //
 
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-struct PlanosDataModel: Decodable, Identifiable {
+
+struct StockDataModel: Decodable, Identifiable {
     @DocumentID var id: String?
     var codigo: String
-    var url: String
+    var descripcion: String
+    var kanban: Bool
 }
 
-final class PlanosDatasource {
+final class StockDatasource {
     private let database = Firestore.firestore()
-    private let collection = "Planos"
+    private let collection = "Stock"
     
-    func getAllPlanos(completionBlock: @escaping (Result<[PlanosDataModel], Error>)->Void){
+    func getAllPieces(completionBlock: @escaping (Result<[StockDataModel], Error>)->Void){
         database.collection(collection).addSnapshotListener{ query, error in
             if let error = error {
                 print ("Error getting all planos \(error.localizedDescription)")
@@ -30,11 +32,12 @@ final class PlanosDatasource {
                 completionBlock(.success([]))
                 return
             }
-            var planos = documents.map { try? $0.data(as: PlanosDataModel.self) }.compactMap { $0 }
-            planos.sort {
+            var stock = documents.map { try? $0.data(as: StockDataModel.self) }.compactMap { $0 }
+            stock.sort {
                 $0.codigo < $1.codigo
             }
-            completionBlock(.success(planos))
+            completionBlock(.success(stock))
         }
     }
 }
+

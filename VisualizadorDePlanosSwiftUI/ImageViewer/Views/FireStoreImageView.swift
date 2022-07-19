@@ -9,10 +9,12 @@ import SwiftUI
 
 struct FireStoreImageView: View {
     let codigo: String
+    let descripcion: String
     let ubicacion: String
     var body: some View {
         VStack{
             Text("\(codigo)")
+            Text ("\(descripcion)")
             AsyncImage(url: URL(string: ubicacion)) { image in
                     image.resizable()
                 } placeholder: {
@@ -21,12 +23,13 @@ struct FireStoreImageView: View {
                 }
             .padding(10)
             .scaledToFit()
+            Spacer()
         }
     }
 }
 
 struct FireStoreImageView_Previews: PreviewProvider {
     static var previews: some View {
-        FireStoreImageView(codigo: "Codigo", ubicacion: "Codigo de imagen")
+        FireStoreImageView(codigo: "Codigo", descripcion: "Descripción", ubicacion: "Codigo de imagen")
     }
 }
