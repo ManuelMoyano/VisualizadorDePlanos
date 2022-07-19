@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 
-struct StockDataModel: Decodable, Identifiable {
+struct StockDataModel: Decodable, Identifiable, Encodable {
     @DocumentID var id: String?
     var codigo: String
     var descripcion: String
@@ -37,6 +37,17 @@ final class StockDatasource {
                 $0.codigo < $1.codigo
             }
             completionBlock(.success(stock))
+        }
+    }
+    
+    func updateStock (codigo: StockDataModel){
+        guard let documentId = codigo.id else {
+            return
+        }
+        do {
+            _ = try database.collection(collection).document(documentId).setData(from: codigo)
+        } catch {
+            print ("Error updating Stock")
         }
     }
 }

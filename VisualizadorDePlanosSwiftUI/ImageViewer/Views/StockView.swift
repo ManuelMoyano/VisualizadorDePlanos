@@ -47,6 +47,23 @@ struct StockView: View {
                                 }
                                 
                             }
+                            .swipeActions {
+                                if piece.kanban {
+                                    Button {
+                                        stockViewModel.update(codigo: piece)
+                                    } label: {
+                                        Label("Desactivar Pedido", systemImage: "circle.fill")
+                                    }
+                                    .tint(.green)
+                                } else {
+                                    Button {
+                                        stockViewModel.update(codigo: piece)
+                                    } label: {
+                                        Label("Desactivar Pedido", systemImage: "circle.fill")
+                                    }
+                                    .tint(.red)
+                                }
+                            }
                     }
                     .searchable(text: $searchText)
                     }

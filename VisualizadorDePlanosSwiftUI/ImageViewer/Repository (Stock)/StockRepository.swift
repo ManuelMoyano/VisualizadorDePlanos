@@ -17,4 +17,7 @@ final class StockRepository {
     func getAllPieces (completionBlock: @escaping (Result<[StockDataModel], Error>)->Void) {
         stockDatasource.getAllPieces(completionBlock: completionBlock)
     }
+    func updateStock (codigo: StockDataModel){
+        stockDatasource.updateStock(codigo: codigo)
+    }
 }

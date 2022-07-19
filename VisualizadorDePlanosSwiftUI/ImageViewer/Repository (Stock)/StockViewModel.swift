@@ -26,4 +26,9 @@ final class StockViewModel: ObservableObject {
             }
         }
     }
+    
+    func update(codigo: StockDataModel){
+        let updateStock = StockDataModel (id: codigo.id, codigo: codigo.codigo, descripcion: codigo.descripcion, kanban: codigo.kanban ? false : true)
+        stockRepository.updateStock(codigo: updateStock)
+    }
 }
