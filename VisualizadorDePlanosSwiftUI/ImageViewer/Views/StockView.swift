@@ -11,13 +11,8 @@ struct StockView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @StateObject var stockViewModel: StockViewModel = StockViewModel()
     @State private var searchText = ""
-    var searchResults: [StockDataModel] {
-        if searchText.isEmpty {
-            return stockViewModel.pieces
-        } else {
-            return stockViewModel.pieces.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) || $0.descripcion.localizedCaseInsensitiveContains(searchText)  }
-        }
-    }
+    @State private var activePieces = false
+
     
     
     
@@ -31,45 +26,22 @@ struct StockView: View {
             NavigationView{
                 VStack{
                     Section{
-                    List (searchResults, id: \.id) { piece in
-                            HStack{
-                                Image(systemName: "arrow.right.doc.on.clipboard")
-                                Text ("\(piece.codigo)")
-                                Text ("\(piece.descripcion)")
-                                Spacer()
-                                if piece.kanban {
-                                    Image (systemName: "circle.fill")
-                                        .foregroundColor(.red)
-                                    
-                                } else {
-                                    Image (systemName: "circle.fill")
-                                        .foregroundColor(.gray)
-                                }
-                                
-                            }
-                            .swipeActions {
-                                if piece.kanban {
-                                    Button {
-                                        stockViewModel.update(codigo: piece)
-                                    } label: {
-                                        Label("Desactivar Pedido", systemImage: "circle.fill")
-                                    }
-                                    .tint(.green)
-                                } else {
-                                    Button {
-                                        stockViewModel.update(codigo: piece)
-                                    } label: {
-                                        Label("Desactivar Pedido", systemImage: "circle.fill")
-                                    }
-                                    .tint(.red)
-                                }
-                            }
-                    }
-                    .searchable(text: $searchText)
+                        if activePieces {
+                            ListStockView(stockList: stockViewModel.pieces.filter{$0.kanban})
+                        } else {
+                            ListStockView(stockList: stockViewModel.pieces)
+                        }
                     }
                 .toolbar {
                     ToolbarItem (placement: .principal) {
                         HStack {
+                            Button ("Active Pieces"){
+                                activePieces.toggle()
+                            }
+                            .frame(height: 30)
+                            .foregroundColor(.white)
+                            .background(Color.orange.opacity(0.7))
+                            .cornerRadius(15)
                             Spacer()
                             Button ("List Files"){
                                 Task {
