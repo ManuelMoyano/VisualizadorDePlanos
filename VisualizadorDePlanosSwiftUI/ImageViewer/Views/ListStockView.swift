@@ -23,7 +23,6 @@ struct ListStockView: View {
     var body: some View {
         List (searchResults, id: \.id) { piece in
                 HStack{
-                    Image(systemName: "arrow.right.doc.on.clipboard")
                     Text ("\(piece.codigo)")
                     Text ("\(piece.descripcion)")
                     Spacer()

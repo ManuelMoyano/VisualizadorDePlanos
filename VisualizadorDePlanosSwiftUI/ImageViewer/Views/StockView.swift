@@ -40,7 +40,7 @@ struct StockView: View {
                             }
                             .frame(height: 30)
                             .foregroundColor(.white)
-                            .background(Color.orange.opacity(0.7))
+                            .background(activePieces ? Color.red.opacity(0.8) : Color.orange.opacity(0.7))
                             .cornerRadius(15)
                             Spacer()
                             Button ("List Files"){

@@ -10,6 +10,8 @@ import SwiftUI
 struct OptionsView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @State private var optionsSheet: OptionsViewSheets?
+    let rgbColor = Color(red: 1.0, green: 0.5, blue: 0.5)
+
     
     var body: some View {
         NavigationView{
@@ -24,9 +26,14 @@ struct OptionsView: View {
                     Text ("Storage")
                     }
                 }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
                 .font(.system(size: 30))
+                .frame(width: 300, height: 40)
+                .shadow(color: Color.white, radius: 20)
+                .scenePadding(.horizontal)
+                .foregroundColor(.white)
+                .background(Color("ButtonColor"))
+                .cornerRadius(8)
+                .padding(3)
                 Button {
                     optionsSheet = .firestore
                 } label: {
@@ -35,9 +42,14 @@ struct OptionsView: View {
                     Text ("FireStore")
                     }
                 }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
                 .font(.system(size: 30))
+                .frame(width: 300, height: 40)
+                .shadow(color: Color.white, radius: 20)
+                .scenePadding(.horizontal)
+                .foregroundColor(.white)
+                .background(Color("ButtonColor"))
+                .cornerRadius(8)
+                .padding(3)
                 Button {
                     optionsSheet = .stock
                 } label: {
@@ -46,9 +58,14 @@ struct OptionsView: View {
                     Text ("Stock")
                     }
                 }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
                 .font(.system(size: 30))
+                .frame(width: 300, height: 40)
+                .shadow(color: Color.white, radius: 20)
+                .scenePadding(.horizontal)
+                .foregroundColor(.white)
+                .background(Color("ButtonColor"))
+                .cornerRadius(8)
+                .padding(3)
                 Spacer()
             }
                 .toolbar {

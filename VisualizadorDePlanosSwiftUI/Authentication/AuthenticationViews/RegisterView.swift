@@ -17,13 +17,12 @@ struct RegisterView: View {
         VStack {
             LogoView()
             Text("Register")
-                .padding(30)
                 .font(.largeTitle)
             TextField("Email Adress", text: $userEmailAdress)
-                .padding(.top,20)
-                .border(.gray, width: 1)
-            TextField("Password", text: $userPassword)
-                .padding(.top,20)
+                .textFieldStyle(.roundedBorder)
+                .border(.gray, width: 2)
+            SecureField("Password", text: $userPassword)
+                .textFieldStyle(.roundedBorder)
                 .border(.gray, width: 2)
             Spacer()
             Button ("Aceptar") {

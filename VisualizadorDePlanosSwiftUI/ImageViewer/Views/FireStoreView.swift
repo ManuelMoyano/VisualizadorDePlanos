@@ -11,15 +11,7 @@ struct FireStoreView: View {
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @StateObject var planosViewModel: PlanosViewModel = PlanosViewModel()
     @State private var searchText = ""
-    var searchResults: [PlanosDataModel] {
-        //        if filter == .codigo {
-        //            return planosViewModel.planos.filter { $0.codigo.localizedCaseInsensitiveContains(searchText) }
-        //        }
-        //        if filter == .descripcion {
-        //            return planosViewModel.planos.filter { $0.descripcion.localizedCaseInsensitiveContains(searchText) }
-        //        }
-        //        return planosViewModel.planos
-        
+    var searchResults: [PlanosDataModel] {        
         if searchText.isEmpty {
             return planosViewModel.planos
         } else {
@@ -43,7 +35,7 @@ struct FireStoreView: View {
                                 FireStoreImageView(codigo: plano.codigo, descripcion: plano.descripcion, ubicacion: plano.url)
                             } label: {
                                 HStack{
-                                    Image(systemName: "arrow.right.doc.on.clipboard")
+                                    Image(systemName: "photo.artframe")
                                     Text ("\(plano.codigo)")
                                     Text ("\(plano.descripcion)")
                                 }

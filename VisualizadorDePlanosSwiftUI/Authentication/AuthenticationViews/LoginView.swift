@@ -21,11 +21,12 @@ struct LoginView: View {
                 .font(.largeTitle)
             Group {
                 TextField("Email Adress", text: $userEmailAdress)
-                    .padding(.top,20)
-                    .border(.gray, width: 1)
-                TextField("Password", text: $userPassword)
-                    .padding(.top,20)
-                    .border(.gray, width: 1)
+                    .textFieldStyle(.roundedBorder)
+                    .border(.gray, width: 2)
+
+                SecureField("Password", text: $userPassword)
+                    .textFieldStyle(.roundedBorder)
+                    .border(.gray, width: 2)
             }
             Spacer()
             Button ("Login"){
